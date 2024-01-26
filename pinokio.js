@@ -37,17 +37,10 @@ module.exports = {
       } else {
         return [{
           icon: "fa-solid fa-power-off",
-          text: "Text to Video",
+          text: "Start",
           href: "start.js",
           params: {
             model: "t2v"
-          }
-        }, {
-          icon: "fa-solid fa-power-off",
-          text: "Image to Video",
-          href: "start.js",
-          params: {
-            model: "i2v"
           }
         }, {
           icon: "fa-solid fa-plug",
