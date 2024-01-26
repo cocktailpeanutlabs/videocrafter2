@@ -2,7 +2,7 @@ const path = require('path')
 module.exports = {
   version: 1,
   title: "VideoCrafter 2",
-  description: "VideoCrafter is an open-source video generation and editing toolbox for crafting video content. It currently includes the Text2Video and Image2Video models https://github.com/AILab-CVC/VideoCrafter",
+  description: "[Runs fast on NVIDIA GPUs. Works on M1/M2/M3 Macs but slow] VideoCrafter is an open-source video generation and editing toolbox for crafting video content. It currently includes the Text2Video and Image2Video models https://github.com/AILab-CVC/VideoCrafter",
   icon: "icon.png",
   menu: async (kernel) => {
     let installing = await kernel.running(__dirname, "install.js")
