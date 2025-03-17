@@ -1,9 +1,9 @@
 module.exports = async (kernel) => {
   return {
     "cmds": {
-      "nvidia": "pip install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu118",
-      "amd": "pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.6",
-      "default": "pip install torch torchvision torchaudio"
+      "nvidia": "uv pip install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 xformers --index-url https://download.pytorch.org/whl/cu124",
+      "amd": "uv pip install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 --index-url https://download.pytorch.org/whl/rocm6.2",
+      "default": "uv pip install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 --index-url https://download.pytorch.org/whl/cpu"
     },
     "run": [{
       "method": "shell.run",
@@ -16,9 +16,10 @@ module.exports = async (kernel) => {
         "path": "app",
         "venv": "env",
         "message": [
+          "python -m pip install pip==24.0",
           "{{(gpu === 'nvidia' ? self.cmds.nvidia : ((gpu === 'amd' && platform === 'linux') ? self.cmds.amd : self.cmds.default))}}",
-          "pip install -r requirements.txt",
-          "pip install {{platform === 'darwin' ? 'eva-decord' : 'decord'}}",
+          "uv pip install -r requirements.txt",
+          "uv pip install {{platform === 'darwin' ? 'eva-decord' : 'decord'}}",
         ]
       }
     }, {
